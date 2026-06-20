@@ -525,6 +525,36 @@
     .btn-nudge:hover { background: #e85a25; transform: translateY(-2px); }
 
     /* ══════════════════════════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════════════════════════ */
+    #about {
+      background: var(--cream);
+      padding: 96px 24px;
+      text-align: center;
+    }
+    .about-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 28px;
+    }
+    .about-body {
+      font-size: clamp(17px, 2vw, 20px);
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.75;
+      max-width: 640px;
+      margin: 0 auto 20px;
+    }
+    .about-coda {
+      font-style: italic;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════════════════════════ */
     .site-footer {
@@ -609,7 +639,7 @@
 
   <ul class="nav-links">
     <li><a href="#worksheets">Worksheets</a></li>
-    <li><a href="#">About</a></li>
+    <li><a href="#about">About</a></li>
   </ul>
 
   <a href="#" class="nav-cta">Get Vidya</a>
@@ -621,7 +651,7 @@
 
 <div class="mobile-drawer" id="mobile-drawer">
   <a href="#worksheets" onclick="closeNav()">Worksheets</a>
-  <a href="#" onclick="closeNav()">About</a>
+  <a href="#about" onclick="closeNav()">About</a>
   <a href="#" class="nav-cta" onclick="closeNav()">Get Vidya</a>
 </div>
 
@@ -1026,6 +1056,26 @@
     </div>
 
   </div>
+</section>
+
+
+<!--
+  Omnispark: omni = all-round, spark = ignite
+  Domain: omnispark.in
+  First app: Vidya — Flutter EdTech app for Indian kids Class 1-5
+  Future: Multiple apps across different categories under Omnispark brand
+-->
+
+<!-- ════════════════════════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════════════════════ -->
+<section id="about">
+  <p class="about-label">About Omnispark</p>
+  <p class="about-body">
+    Omnispark is a small independent studio building digital learning tools for kids and students across India.
+    We believe good education software should be safe, joyful, and work for every family &mdash; not just the ones with fast internet.
+  </p>
+  <p class="about-coda">Vidya is our first app. More are coming.</p>
 </section>
 
 
