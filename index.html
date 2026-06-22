@@ -624,6 +624,56 @@
       .btn-fill, .btn-ghost { width: 100%; max-width: 280px; text-align: center; }
       .nudge { padding: 28px 20px; }
     }
+
+    /* ── GyanQuest App Icon ─────────────────────────────────────── */
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; }
+    .app-icon-nav {
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .app-card-icon-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .app-card-icon-img {
+      width: 72px; height: 72px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 4px 16px rgba(255,107,53,0.35);
+      flex-shrink: 0;
+    }
+    .app-card-icon-text { display: flex; flex-direction: column; gap: 4px; }
+    .app-card-icon-type {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .app-card-icon-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 700;
+      color: var(--dark); line-height: 1;
+    }
+    .nudge-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(255,107,53,0.3);
+    }
+    .btn-icon {
+      width: 20px; height: 20px;
+      border-radius: 5px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    @media (max-width: 380px) {
+      .app-icon-nav { display: none; }
+      .btn-icon { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -642,7 +692,11 @@
     <li><a href="#about">About</a></li>
   </ul>
 
-  <a href="#" class="nav-cta">Get GyanQuest</a>
+  <!-- TODO: replace # with Play Store URL when published -->
+  <a href="#" class="nav-cta">
+    <img src="assets/images/gyanquest-icon-48.png" alt="" class="app-icon-nav" loading="lazy">
+    Get GyanQuest
+  </a>
 
   <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleNav()">
     <span></span><span></span><span></span>
@@ -652,7 +706,10 @@
 <div class="mobile-drawer" id="mobile-drawer">
   <a href="#worksheets" onclick="closeNav()">Worksheets</a>
   <a href="#about" onclick="closeNav()">About</a>
-  <a href="#" class="nav-cta" onclick="closeNav()">Get GyanQuest</a>
+  <a href="#" class="nav-cta" onclick="closeNav()">
+    <img src="assets/images/gyanquest-icon-48.png" alt="" class="app-icon-nav" loading="lazy">
+    Get GyanQuest
+  </a>
 </div>
 
 
@@ -675,7 +732,10 @@
 
   <div class="hero-btns">
     <a href="#worksheets" class="btn-fill">Download Worksheets</a>
-    <a href="#" class="btn-ghost">Get the App</a>
+    <a href="#" class="btn-ghost" style="display:inline-flex;align-items:center;gap:8px;">
+      <img src="assets/images/gyanquest-icon-48.png" alt="" class="btn-icon" loading="lazy">
+      Get the App
+    </a>
   </div>
 
   <div class="scroll-hint">
@@ -698,9 +758,13 @@
 
       <!-- Left: App card -->
       <div class="app-card">
-        <div class="app-card-icon"><i class="ti ti-book-2"></i></div>
-        <div class="app-type">Free EdTech App</div>
-        <h3 class="app-name">GyanQuest</h3>
+        <div class="app-card-icon-wrap">
+          <img src="assets/images/gyanquest-icon-192.png" alt="GyanQuest app icon" class="app-card-icon-img" loading="lazy">
+          <div class="app-card-icon-text">
+            <span class="app-card-icon-type">Free EdTech App</span>
+            <span class="app-card-icon-name">GyanQuest</span>
+          </div>
+        </div>
         <p class="app-desc">Practice questions, progress tracking, and Olympiad prep &mdash; all in one app. Works offline, so your child can learn from anywhere, anytime.</p>
         <div class="pills">
           <span class="pill">Math</span>
@@ -1048,10 +1112,12 @@
 
     <!-- Nudge -->
     <div class="nudge">
+      <img src="assets/images/gyanquest-icon-192.png" alt="GyanQuest" class="nudge-icon" loading="lazy">
       <div class="nudge-copy">
         <h3>Want more practice?</h3>
         <p>500+ questions, parent reports, Olympiad prep &mdash; free on Android</p>
       </div>
+      <!-- TODO: replace # with Play Store URL when published -->
       <a href="#" class="btn-nudge">Get GyanQuest &rarr;</a>
     </div>
 
@@ -1092,7 +1158,7 @@
       <p class="foot-tagline">Made with care in India</p>
     </div>
     <ul class="foot-links">
-      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="#">Terms</a></li>
       <li><a href="#">Contact</a></li>
     </ul>

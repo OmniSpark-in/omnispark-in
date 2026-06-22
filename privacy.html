@@ -1,30 +1,798 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OmniSpark | Privacy Policy</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Omnispark</title>
+  <meta name="description" content="Privacy Policy for GyanQuest and omnispark.in. We take children's privacy seriously and explain exactly what we collect and why.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <style>
+    /* ── Reset & base ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #FFF8F0;
+      color: #1C1320;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Design tokens ──────────────────────────────────────────── */
+    :root {
+      --orange:  #FF6B35;
+      --gold:    #FFB800;
+      --dark:    #1C1320;
+      --cream:   #FFF8F0;
+      --muted:   #5a4f5c;
+      --white:   #ffffff;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════════════════ */
+    #main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s, box-shadow 0.35s;
+    }
+    #main-nav.scrolled {
+      background: rgba(255,248,240,0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(28,19,32,0.08);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--orange);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-word {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      transition: color 0.35s;
+    }
+    #main-nav.scrolled .logo-word { color: var(--dark); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-weight: 700;
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      transition: color 0.2s;
+    }
+    #main-nav.scrolled .nav-links a { color: var(--dark); }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a.active { color: var(--orange) !important; }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 9px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: #e85a25; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.3s, opacity 0.3s;
+    }
+    #main-nav.scrolled .hamburger span { background: var(--dark); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(255,248,240,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(28,19,32,0.07);
+      padding: 24px 32px;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 299;
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a { font-weight: 700; font-size: 16px; color: var(--dark); }
+    .mobile-drawer a:hover { color: var(--orange); }
+    .mobile-drawer .nav-cta { text-align: center; border-radius: 9px; color: #fff; }
+
+    /* ══════════════════════════════════════════════════════════════
+       PRIVACY HERO
+    ══════════════════════════════════════════════════════════════ */
+    .privacy-hero {
+      background: var(--dark);
+      padding: 140px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .privacy-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 30% 50%, rgba(255,107,53,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 75% 60%, rgba(255,184,0,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+    .privacy-hero .label {
+      position: relative;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .privacy-hero h1 {
+      position: relative;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4.5vw, 54px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .privacy-hero .subtitle {
+      position: relative;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 24px;
+    }
+    .privacy-hero .intro {
+      position: relative;
+      font-size: clamp(16px, 1.8vw, 18px);
+      color: rgba(255,255,255,0.6);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       POLICY BODY
+    ══════════════════════════════════════════════════════════════ */
+    .policy-body {
+      background: var(--white);
+      padding: 72px 24px 96px;
+    }
+    .policy-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: var(--cream);
+      border: 1px solid rgba(255,107,53,0.18);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+    .toc-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      padding-left: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+    .toc li { font-size: 14px; font-weight: 600; }
+    .toc a { color: var(--dark); transition: color 0.2s; }
+    .toc a:hover { color: var(--orange); }
+
+    /* Policy sections */
+    .policy-section {
+      margin-bottom: 52px;
+      padding-top: 8px;
+    }
+    .policy-section:last-child { margin-bottom: 0; }
+
+    .policy-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(255,107,53,0.15);
+    }
+    .policy-section h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 20px 0 8px;
+    }
+    .policy-section p {
+      font-size: 16px;
+      color: #3a2f3d;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-section ul, .policy-section ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    .policy-section li {
+      font-size: 16px;
+      color: #3a2f3d;
+      line-height: 1.75;
+      margin-bottom: 6px;
+    }
+    .policy-section li:last-child { margin-bottom: 0; }
+
+    /* Highlight boxes */
+    .highlight-box {
+      background: rgba(255,107,53,0.06);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 15px;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    .highlight-box strong { color: #c94d1a; }
+
+    .no-collect-box {
+      background: rgba(22,163,74,0.06);
+      border-left: 3px solid #16A34A;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .no-collect-box p {
+      font-size: 15px;
+      color: #14532d;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .no-collect-box ul { margin-bottom: 0; }
+    .no-collect-box li { color: #14532d; font-size: 15px; }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 32px 36px;
+      margin-top: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .contact-icon {
+      width: 48px; height: 48px;
+      background: var(--orange);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon i { font-size: 22px; color: #fff; }
+    .contact-copy h4 {
+      font-size: 16px; font-weight: 800;
+      color: #fff; margin-bottom: 6px;
+    }
+    .contact-copy p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 4px;
+      line-height: 1.6;
+    }
+    .contact-copy p:last-child { margin-bottom: 0; }
+    .contact-copy a { color: var(--orange); font-weight: 700; }
+    .contact-copy a:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    .site-footer {
+      background: var(--dark);
+      padding: 56px 24px 0;
+    }
+    .foot-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .foot-brand .logo-word { color: #fff; }
+    .foot-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 8px;
+      padding-left: 46px;
+    }
+    .foot-links {
+      list-style: none;
+      display: flex; gap: 28px;
+      flex-wrap: wrap; align-items: center;
+    }
+    .foot-links a {
+      font-size: 14px; font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      transition: color 0.2s;
+    }
+    .foot-links a:hover { color: var(--orange); }
+    .foot-links a.active { color: var(--orange); }
+    .foot-bottom {
+      max-width: 1100px; margin: 0 auto;
+      padding: 20px 0;
+      font-size: 13px; color: rgba(255,255,255,0.22);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .toc ol { grid-template-columns: 1fr; }
+      .contact-card { flex-direction: column; gap: 16px; }
+      .foot-inner { flex-direction: column; gap: 24px; }
+      .foot-links { gap: 18px; }
+    }
+
+    @media (max-width: 480px) {
+      #main-nav { padding: 14px 18px; }
+      .privacy-hero { padding: 120px 16px 64px; }
+      .policy-body { padding: 48px 16px 72px; }
+      .toc { padding: 20px; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Privacy Policy</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="gyanquest.html">GyanQuest</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-    </nav>
-  </header>
-  <main>
-    <h2>Privacy</h2>
-    <p>This page covers how OmniSpark handles personal information and data.</p>
-  </main>
-  <footer>
-    <p>&copy; 2026 OmniSpark.</p>
-  </footer>
-  <script src="assets/js/main.js"></script>
+
+<!-- ════════════════════════════════════════════════════════════
+     STICKY NAV
+════════════════════════════════════════════════════════════ -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">O</div>
+    <span class="logo-word">Omnispark</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html#worksheets">Worksheets</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="privacy.html" class="active">Privacy</a></li>
+  </ul>
+
+  <!-- TODO: replace # with Play Store URL when published -->
+  <a href="#" class="nav-cta" style="display:inline-flex;align-items:center;gap:8px;">
+    <img src="assets/images/gyanquest-icon-48.png" alt="" style="width:22px;height:22px;border-radius:6px;object-fit:cover;flex-shrink:0;" loading="lazy">
+    Get GyanQuest
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-drawer" id="mobile-drawer">
+  <a href="index.html#worksheets" onclick="closeNav()">Worksheets</a>
+  <a href="index.html#about" onclick="closeNav()">About</a>
+  <a href="privacy.html" onclick="closeNav()">Privacy</a>
+  <a href="#" class="nav-cta" onclick="closeNav()" style="display:inline-flex;align-items:center;gap:8px;">
+    <img src="assets/images/gyanquest-icon-48.png" alt="" style="width:22px;height:22px;border-radius:6px;object-fit:cover;" loading="lazy">
+    Get GyanQuest
+  </a>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     PRIVACY HERO
+════════════════════════════════════════════════════════════ -->
+<section class="privacy-hero">
+  <div class="hero-grid-bg"></div>
+  <p class="label">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">Last updated: June 2026</p>
+  <p class="intro">
+    At Omnispark, we build apps for children and take their privacy very seriously.
+    This policy explains what information we collect, how we use it, and your rights
+    as a parent or guardian.
+  </p>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     POLICY BODY
+════════════════════════════════════════════════════════════ -->
+<main class="policy-body">
+  <div class="policy-wrap">
+
+    <!-- Table of contents -->
+    <div class="toc">
+      <p class="toc-label">Contents</p>
+      <ol>
+        <li><a href="#about-gyanquest">About GyanQuest</a></li>
+        <li><a href="#who-this-applies-to">Who this policy applies to</a></li>
+        <li><a href="#what-we-collect">What information we collect</a></li>
+        <li><a href="#how-we-use">How we use your information</a></li>
+        <li><a href="#childrens-privacy">Children's privacy (under 13)</a></li>
+        <li><a href="#third-parties">Third-party services</a></li>
+        <li><a href="#data-retention">Data storage and retention</a></li>
+        <li><a href="#your-rights">Your rights as a parent</a></li>
+        <li><a href="#dpdp">Indian DPDP Act 2023</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </div>
+
+
+    <!-- ── Section 1 ── -->
+    <section class="policy-section" id="about-gyanquest">
+      <h2>1. About GyanQuest</h2>
+      <p>
+        GyanQuest is a free educational app for children in Classes 1&ndash;5 (typically ages 6&ndash;11).
+        It is developed and published by <strong>Omnispark</strong>, an independent studio based in India.
+        The app provides practice questions, progress tracking, and Olympiad preparation across
+        Mathematics, Science, General Knowledge, and English.
+      </p>
+      <p>
+        GyanQuest is designed to work <strong>offline</strong>, meaning most features do not require
+        an internet connection. The app contains <strong>no advertisements</strong> and is
+        completely free to use.
+      </p>
+    </section>
+
+
+    <!-- ── Section 2 ── -->
+    <section class="policy-section" id="who-this-applies-to">
+      <h2>2. Who this policy applies to</h2>
+      <p>This Privacy Policy applies to:</p>
+      <ul>
+        <li>All users of the GyanQuest Android app</li>
+        <li>All visitors to <strong>omnispark.in</strong></li>
+        <li>Parents and guardians who create accounts on behalf of their children</li>
+      </ul>
+      <p>
+        Because GyanQuest is designed for children, we require a parent or guardian to create
+        and manage any account. Children do not interact directly with account registration
+        or data settings.
+      </p>
+    </section>
+
+
+    <!-- ── Section 3 ── -->
+    <section class="policy-section" id="what-we-collect">
+      <h2>3. What information we collect</h2>
+
+      <h3>Information you provide</h3>
+      <ul>
+        <li><strong>Parent or guardian email address</strong> &mdash; used to create and manage your account and receive account-related communications</li>
+        <li><strong>Child's first name and class / grade</strong> &mdash; used to personalise the learning experience and display progress in the parent dashboard</li>
+      </ul>
+      <p>We do <strong>not</strong> collect a child's surname, date of birth, phone number, photograph, or physical address.</p>
+
+      <h3>Information collected automatically</h3>
+      <ul>
+        <li><strong>App usage data</strong> &mdash; topics practised, questions answered, scores, and time spent. This is stored locally on the device by default and only synced to our servers if you enable cloud backup.</li>
+        <li><strong>Crash and diagnostic data</strong> &mdash; device type, OS version, and app version, collected anonymously to help us fix bugs.</li>
+        <li><strong>Anonymous session identifiers</strong> &mdash; if you use cloud sync, we generate a random ID to associate your progress data with your account. This ID is not linked to any external identity.</li>
+      </ul>
+
+      <div class="no-collect-box">
+        <p>We do NOT collect:</p>
+        <ul>
+          <li>Photos, videos, or audio recordings</li>
+          <li>Location data (GPS or network-based)</li>
+          <li>Contacts, call logs, or SMS data</li>
+          <li>Payment or financial information (the app is free)</li>
+          <li>Social media profiles or login credentials from other services</li>
+          <li>Behavioural data used for advertising or profiling</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ── Section 4 ── -->
+    <section class="policy-section" id="how-we-use">
+      <h2>4. How we use your information</h2>
+      <p>We use the information we collect only for the following purposes:</p>
+      <ul>
+        <li>To display your child's learning progress in the parent dashboard</li>
+        <li>To personalise practice sessions based on the child's class and past performance</li>
+        <li>To diagnose and fix app crashes and technical issues</li>
+        <li>To respond to support or privacy requests from parents and guardians</li>
+        <li>To send important account-related emails (such as password reset). We do not send marketing emails without your explicit consent.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>We do not use your data for advertising.</strong> We do not build advertising profiles,
+        sell user data, or share data with ad networks. GyanQuest will never show personalised ads to children.
+      </div>
+    </section>
+
+
+    <!-- ── Section 5 ── -->
+    <section class="policy-section" id="childrens-privacy">
+      <h2>5. Children's privacy (under 13)</h2>
+      <p>
+        GyanQuest is designed for children and we apply the following protections as required by
+        the Google Play Families Policy and applicable child privacy laws:
+      </p>
+      <ul>
+        <li><strong>Parental account creation:</strong> A parent or guardian must create the account. Children do not go through any registration flow themselves.</li>
+        <li><strong>No personal data from children without parental consent:</strong> We do not knowingly collect any personal data from a child unless a parent or guardian has provided it during account setup.</li>
+        <li><strong>No behavioural advertising:</strong> GyanQuest does not display interest-based or behavioural advertisements to any user, including children.</li>
+        <li><strong>No social features:</strong> Children cannot post publicly, message other users, or share personal information within the app.</li>
+        <li><strong>No in-app purchases:</strong> The app is entirely free. There are no purchases, subscriptions, or virtual currency systems.</li>
+        <li><strong>Parental controls:</strong> Parents can review all data stored about their child and request its deletion at any time (see Section 8).</li>
+      </ul>
+      <p>
+        If we become aware that we have inadvertently collected personal data from a child without
+        verifiable parental consent, we will delete that data promptly. Please contact us immediately
+        if you believe this has occurred.
+      </p>
+    </section>
+
+
+    <!-- ── Section 6 ── -->
+    <section class="policy-section" id="third-parties">
+      <h2>6. Third-party services</h2>
+      <p>
+        We use a small number of trusted third-party services to operate GyanQuest. Each has been
+        selected for its compliance with children's privacy standards:
+      </p>
+      <ul>
+        <li>
+          <strong>Google Firebase</strong> (authentication and crash analytics) &mdash;
+          Firebase processes data in accordance with Google's privacy policies.
+          Crash reports sent to Firebase are anonymised and do not contain personal information about children.
+        </li>
+        <li>
+          <strong>Google Play Services</strong> &mdash; used for app distribution and
+          core Android functionality. Governed by Google's Privacy Policy.
+        </li>
+      </ul>
+      <p>
+        We do not use any advertising SDKs, social media SDKs, or analytics tools that
+        build user profiles or track users across apps.
+      </p>
+
+      <div class="highlight-box">
+        <strong>We never sell, rent, or trade your personal data.</strong> Data shared with the
+        service providers above is strictly for operating the app. They are contractually prohibited
+        from using it for any other purpose.
+      </div>
+    </section>
+
+
+    <!-- ── Section 7 ── -->
+    <section class="policy-section" id="data-retention">
+      <h2>7. Data storage and retention</h2>
+      <ul>
+        <li><strong>Local storage:</strong> Quiz progress and scores are stored on your device by default. Uninstalling the app removes this data.</li>
+        <li><strong>Cloud storage:</strong> If you enable cloud sync, data is stored on secure servers provided by Google Firebase. Firebase infrastructure meets international security standards.</li>
+        <li><strong>Retention period:</strong> We retain account data for as long as your account is active. If you request account deletion, we will remove your personal data within <strong>30 days</strong>.</li>
+        <li><strong>Crash reports:</strong> Anonymised crash logs are retained for up to 90 days and then automatically deleted.</li>
+      </ul>
+    </section>
+
+
+    <!-- ── Section 8 ── -->
+    <section class="policy-section" id="your-rights">
+      <h2>8. Your rights as a parent or guardian</h2>
+      <p>As the parent or guardian of a child using GyanQuest, you have the following rights:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about your child.</li>
+        <li><strong>Correction:</strong> Ask us to correct any inaccurate information.</li>
+        <li><strong>Deletion:</strong> Request that we delete your child's account and all associated personal data. We will complete this within 30 days.</li>
+        <li><strong>Withdrawal of consent:</strong> Withdraw your consent for data processing at any time. This may affect the app's functionality (such as the parent dashboard).</li>
+        <li><strong>Grievance:</strong> Lodge a complaint with us if you believe your data rights have not been respected (see Section 9 for our Grievance Officer details).</li>
+      </ul>
+      <p>
+        To exercise any of these rights, please contact us at the email address in Section 12.
+        We do not charge a fee for these requests and will respond within <strong>30 days</strong>.
+      </p>
+    </section>
+
+
+    <!-- ── Section 9 ── -->
+    <section class="policy-section" id="dpdp">
+      <h2>9. Indian DPDP Act 2023</h2>
+      <p>
+        Omnispark acts as a <strong>Data Fiduciary</strong> under the Digital Personal Data
+        Protection Act, 2023 (DPDP Act), India. We are committed to the following obligations
+        under this law:
+      </p>
+      <ul>
+        <li><strong>Purpose limitation:</strong> We collect only the personal data that is necessary for the purposes described in this policy.</li>
+        <li><strong>Verifiable parental consent:</strong> Before collecting any personal data relating to a child (defined as a person under 18 years of age under the DPDP Act), we obtain consent from a parent or guardian.</li>
+        <li><strong>No harmful processing:</strong> We do not process children's data in any manner that could cause harm to their well-being, including behavioural monitoring or profiling.</li>
+        <li><strong>Data accuracy:</strong> We take reasonable steps to ensure that the data we hold is accurate and up to date.</li>
+        <li><strong>Grievance redressal:</strong> We have appointed a Grievance Officer to handle complaints related to data processing. Complaints will be acknowledged within 48 hours and resolved within 30 days.</li>
+      </ul>
+
+      <div class="contact-card">
+        <div class="contact-icon"><i class="ti ti-shield-check"></i></div>
+        <div class="contact-copy">
+          <h4>Grievance Officer &mdash; DPDP Act 2023</h4>
+          <p>Chandan Singh, Omnispark</p>
+          <p>Email: <a href="mailto:privacy@omnispark.in">privacy@omnispark.in</a></p>
+          <p>Response time: within 30 days of receipt</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Section 10 ── -->
+    <section class="policy-section" id="security">
+      <h2>10. Security</h2>
+      <p>
+        We take reasonable technical and organisational measures to protect the personal data
+        we hold, including:
+      </p>
+      <ul>
+        <li>Encrypted data transmission using HTTPS / TLS for all network communication</li>
+        <li>Access controls so that only authorised personnel can access personal data</li>
+        <li>Use of Firebase Authentication to securely manage user credentials &mdash; we never store raw passwords</li>
+        <li>Regular review of our data practices and security measures</li>
+      </ul>
+      <p>
+        No method of transmission over the internet is 100% secure. If you believe your account
+        or your child's data has been compromised, please contact us immediately at
+        <a href="mailto:privacy@omnispark.in" style="color:var(--orange); font-weight:700;">privacy@omnispark.in</a>.
+      </p>
+    </section>
+
+
+    <!-- ── Section 11 ── -->
+    <section class="policy-section" id="changes">
+      <h2>11. Changes to this policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time as our app evolves or as legal
+        requirements change. When we do, we will:
+      </p>
+      <ul>
+        <li>Update the "Last updated" date at the top of this page</li>
+        <li>For significant changes, notify users via an in-app message or email to the registered parent / guardian address</li>
+      </ul>
+      <p>
+        We encourage parents and guardians to review this policy periodically.
+        Continued use of GyanQuest after a policy update constitutes acceptance of the revised terms.
+      </p>
+    </section>
+
+
+    <!-- ── Section 12 ── -->
+    <section class="policy-section" id="contact">
+      <h2>12. Contact us</h2>
+      <p>
+        If you have any questions, concerns, or requests related to this Privacy Policy or
+        your personal data, please get in touch:
+      </p>
+
+      <div class="contact-card">
+        <div class="contact-icon"><i class="ti ti-mail"></i></div>
+        <div class="contact-copy">
+          <h4>Omnispark Privacy Team</h4>
+          <p>Email: <a href="mailto:privacy@omnispark.in">privacy@omnispark.in</a></p>
+          <p>Website: <a href="https://omnispark.in">omnispark.in</a></p>
+          <p>We aim to respond to all enquiries within 5 business days.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">O</div>
+        <span class="logo-word">Omnispark</span>
+      </a>
+      <p class="foot-tagline">Made with care in India</p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="privacy.html" class="active">Privacy Policy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="mailto:privacy@omnispark.in">Contact</a></li>
+    </ul>
+  </div>
+  <div class="foot-bottom">
+    &copy; 2026 Omnispark. All rights reserved.
+  </div>
+</footer>
+
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const hbg    = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+
+  function toggleNav() {
+    const open = drawer.classList.toggle('open');
+    hbg.classList.toggle('open', open);
+  }
+  function closeNav() {
+    drawer.classList.remove('open');
+    hbg.classList.remove('open');
+  }
+</script>
+
 </body>
 </html>
