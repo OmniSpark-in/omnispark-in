@@ -350,7 +350,24 @@
     .contact-copy p:last-child { margin-bottom: 0; }
     .contact-copy a { color: var(--orange); font-weight: 700; }
     .contact-copy a:hover { text-decoration: underline; }
-
+    .data-action-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--orange);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.15s;
+      margin: 18px 0 0;
+      white-space: nowrap;
+    }
+    .data-action-button:hover {
+      background: #e85a25;
+      transform: translateY(-1px);
+    }
     /* ══════════════════════════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════════════════════════ */
@@ -484,6 +501,7 @@
         <li><a href="#third-parties">Third-party services</a></li>
         <li><a href="#data-retention">Data storage and retention</a></li>
         <li><a href="#your-rights">Your rights as a parent</a></li>
+        <li><a href="#data-deletion">Account and Data Deletion</a></li>
         <li><a href="#dpdp">Indian DPDP Act 2023</a></li>
         <li><a href="#security">Security</a></li>
         <li><a href="#changes">Changes to this policy</a></li>
@@ -660,28 +678,62 @@
       </p>
     </section>
 
-
     <!-- ── Section 9 ── -->
-    <section class="policy-section" id="dpdp">
-      <h2>9. Indian DPDP Act 2023</h2>
+    <section class="policy-section" id="data-deletion">
+      <h2>9. Account and Data Deletion</h2>
       <p>
-        Omnispark acts as a <strong>Data Fiduciary</strong> under the Digital Personal Data
-        Protection Act, 2023 (DPDP Act), India. We are committed to the following obligations
-        under this law:
+        If you want to permanently delete your GyanQuest account and personal data held by Omnispark,
+        you can do that here. This section explains how to submit a deletion request by email,
+        without needing to reinstall, open, or log into the GyanQuest app.
+      </p>
+      <p>
+        You do not need to reinstall, open, or log into the GyanQuest app to complete this request.
+        Simply send your request by email and our team will handle the deletion process promptly.
+      </p>
+      <a
+        class="data-action-button"
+        href="mailto:privacy@omnispark.in?subject=Data%20Deletion%20Request%20-%20GyanQuest&body=Please%20delete%20my%20account%20associated%20with%20the%20email%3A%20"
+      >
+        Request data deletion via email
+      </a>
+      <h3>What will be deleted</h3>
+      <ul>
+        <li>Parent or guardian account details and registered email</li>
+        <li>Child profile information entered in GyanQuest</li>
+        <li>App preferences, learning progress, and cloud backup data</li>
+        <li>Any account-linked project or usage data stored on our servers</li>
+      </ul>
+      <ul>
+        <li>Minimal audit or compliance records required by law</li>
+        <li>Anonymous crash and diagnostic logs retained for up to 90 days</li>
+        <li>Metadata needed to prevent fraud, abuse, or security incidents</li>
+      </ul>
+      <p>
+        If you have questions about the deletion process for GyanQuest, contact us at
+        <a href="mailto:privacy@omnispark.in" style="color:var(--orange); font-weight:700;">privacy@omnispark.in</a>.
+      </p>
+    </section>
+
+
+    <!-- ── Section 10 ── -->
+    <section class="policy-section" id="legal-compliance">
+      <h2>10. Legal Compliance</h2>
+      <p>
+        Omnispark operates in compliance with applicable data privacy laws regulations. We are committed to protecting our users' data rights globally and adhere to the following core data protection principles:
       </p>
       <ul>
-        <li><strong>Purpose limitation:</strong> We collect only the personal data that is necessary for the purposes described in this policy.</li>
-        <li><strong>Verifiable parental consent:</strong> Before collecting any personal data relating to a child (defined as a person under 18 years of age under the DPDP Act), we obtain consent from a parent or guardian.</li>
-        <li><strong>No harmful processing:</strong> We do not process children's data in any manner that could cause harm to their well-being, including behavioural monitoring or profiling.</li>
-        <li><strong>Data accuracy:</strong> We take reasonable steps to ensure that the data we hold is accurate and up to date.</li>
-        <li><strong>Grievance redressal:</strong> Complaints will be acknowledged within 48 hours and resolved within 30 days.</li>
+        <li><strong>Purpose Limitation:</strong> We only collect and process personal data that is strictly necessary for the operations and features described explicitly in this policy.</li>
+        <li><strong>Parental Consent:</strong> We do not knowingly collect personal data from minors without obtaining verifiable parental or guardian consent where required by regional law.</li>
+        <li><strong>Safe Processing:</strong> We do not engage in any data processing tracking behaviors that could harm a child’s well-being, including behavioral monitoring, targeting, or commercial profiling.</li>
+        <li><strong>Data Accuracy:</strong> We take all reasonable steps to ensure that the personal data we maintain is kept accurate, complete, and up to date.</li>
       </ul>
 
       <div class="contact-card">
         <div class="contact-icon"><i class="ti ti-shield-check"></i></div>
         <div class="contact-copy">
+          <h4>Privacy Compliance Contact</h4>
+          <p>If you have questions regarding our legal compliance or how your data is handled, please reach out to us:</p>
           <p>Email: <a href="mailto:privacy@omnispark.in">privacy@omnispark.in</a></p>
-          <p>Response time: within 30 days of receipt</p>
         </div>
       </div>
     </section>
@@ -689,7 +741,7 @@
 
     <!-- ── Section 10 ── -->
     <section class="policy-section" id="security">
-      <h2>10. Security</h2>
+      <h2>11. Security</h2>
       <p>
         We take reasonable technical and organisational measures to protect the personal data
         we hold, including:
@@ -710,7 +762,7 @@
 
     <!-- ── Section 11 ── -->
     <section class="policy-section" id="changes">
-      <h2>11. Changes to this policy</h2>
+      <h2>12. Changes to this policy</h2>
       <p>
         We may update this Privacy Policy from time to time as our app evolves or as legal
         requirements change. When we do, we will:
@@ -728,7 +780,7 @@
 
     <!-- ── Section 12 ── -->
     <section class="policy-section" id="contact">
-      <h2>12. Contact us</h2>
+      <h2>13. Contact us</h2>
       <p>
         If you have any questions, concerns, or requests related to this Privacy Policy or
         your personal data, please get in touch:
