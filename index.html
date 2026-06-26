@@ -370,7 +370,7 @@
     }
     .pills {
       display: flex; flex-wrap: wrap; gap: 8px;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
     .pill {
       background: rgba(255,107,53,0.1);
@@ -378,6 +378,29 @@
       padding: 5px 13px;
       border-radius: 100px;
       font-size: 13px; font-weight: 800;
+    }
+    .pill-soft {
+      background: rgba(28,19,32,0.06);
+      color: var(--muted);
+    }
+    .app-olympiad-note {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+    .app-olympiad-note .soon-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      margin: 0 4px;
+      border-radius: 100px;
+      background: rgba(28,19,32,0.06);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
     .app-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-dark {
@@ -449,52 +472,127 @@
     .subj-head h3 { font-weight: 800; font-size: 15px; }
 
     /* Accordion */
-    .topic-list { padding: 4px 0; }
-    .topic-item { border-bottom: 1px solid rgba(28,19,32,0.05); }
-    .topic-item:last-child { border-bottom: none; }
-
-    .topic-btn {
+    .worksheet-accordion {
+      display: grid;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .worksheet-card {
+      background: #fff;
+      border: 1px solid rgba(28,19,32,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .worksheet-toggle {
       width: 100%; background: none; border: none; cursor: pointer;
       font-family: 'Nunito', sans-serif;
-      font-size: 14px; font-weight: 700; color: var(--dark);
-      padding: 13px 22px;
+      font-size: 15px; font-weight: 700; color: var(--dark);
+      padding: 16px 20px;
       display: flex; align-items: center;
       justify-content: space-between; text-align: left;
       transition: background 0.15s, color 0.15s;
     }
-    .topic-btn:hover { background: rgba(28,19,32,0.03); }
-    .topic-btn.open { color: var(--orange); }
-
-    .topic-chevron {
+    .worksheet-toggle:hover { background: rgba(28,19,32,0.03); }
+    .worksheet-toggle.open { color: var(--orange); }
+    .worksheet-toggle.subject-toggle {
+      border-left: 4px solid var(--accent, var(--orange));
+      padding: 18px 20px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(28,19,32,0.06);
+    }
+    .worksheet-toggle.subject-toggle.open { background: rgba(255,107,53,0.04); }
+    .worksheet-toggle.class-toggle { padding: 14px 20px 14px 28px; font-size: 14px; }
+    .worksheet-toggle.topic-toggle { padding: 13px 20px 13px 36px; font-size: 14px; background: rgba(255,248,240,0.7); }
+    .toggle-label {
+      display: flex; align-items: center; gap: 10px;
+      min-width: 0;
+      text-align: left;
+    }
+    .toggle-icon {
+      width: 32px; height: 32px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,107,53,0.1); color: var(--orange);
+      font-size: 15px; flex-shrink: 0;
+    }
+    .toggle-title-wrap { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .toggle-title { font-weight: 800; }
+    .toggle-subtitle {
+      font-size: 12px; font-weight: 700; color: var(--muted);
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .toggle-meta {
+      display: inline-flex; align-items: center; gap: 8px;
+      flex-shrink: 0;
+    }
+    .meta-pill {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      background: rgba(28,19,32,0.06); padding: 4px 8px; border-radius: 999px;
+    }
+    .worksheet-toggle.subject-toggle .meta-pill {
+      color: var(--accent, var(--orange));
+      background: rgba(255,107,53,0.08);
+    }
+    .worksheet-chevron {
       font-size: 15px; color: #b0a0b8;
       transition: transform 0.25s, color 0.2s;
       flex-shrink: 0;
     }
-    .topic-btn.open .topic-chevron { transform: rotate(180deg); color: var(--orange); }
+    .worksheet-toggle.open .worksheet-chevron { transform: rotate(180deg); color: var(--orange); }
 
-    .sheet-list {
-      display: none;
-      background: rgba(255,248,240,0.65);
-      padding: 2px 0;
+    .accordion-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+      background: rgba(255,248,240,0.7);
     }
-    .sheet-list.open { display: block; }
-
+    .accordion-panel.open { max-height: 2200px; }
     .sheet-row {
       display: flex; align-items: center;
       justify-content: space-between;
-      padding: 9px 22px 9px 34px;
+      gap: 12px;
+      padding: 10px 20px 10px 44px;
+      border-top: 1px solid rgba(28,19,32,0.04);
     }
-    .sheet-row + .sheet-row { border-top: 1px solid rgba(28,19,32,0.04); }
+    .sheet-row:first-of-type { border-top: none; }
+    .sheet-name-wrap {
+      display: flex; align-items: center; gap: 8px;
+      min-width: 0;
+    }
     .sheet-name { font-size: 13px; font-weight: 600; color: #3d3340; }
-    .sheet-dl {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 12px; font-weight: 800; color: var(--orange);
-      border: 1px solid rgba(255,107,53,0.3);
-      border-radius: 6px; padding: 5px 10px;
-      transition: background 0.15s; white-space: nowrap;
+    .sheet-link, .sheet-soon {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 800; white-space: nowrap;
+      border-radius: 999px; padding: 6px 10px;
     }
-    .sheet-dl:hover { background: rgba(255,107,53,0.08); }
-    .sheet-dl i { font-size: 13px; }
+    .sheet-link {
+      color: var(--orange);
+      border: 1px solid rgba(255,107,53,0.28);
+      background: #fff;
+    }
+    .sheet-link:hover { background: rgba(255,107,53,0.08); }
+    .sheet-link i { font-size: 13px; }
+    .sheet-soon {
+      color: var(--muted);
+      background: rgba(28,19,32,0.05);
+      border: 1px solid rgba(28,19,32,0.08);
+    }
+    .soon-badge {
+      display: inline-flex; align-items: center;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      background: rgba(28,19,32,0.08); padding: 3px 7px; border-radius: 999px;
+      margin-left: 2px;
+    }
+    .kindergarten-section {
+      background: #fff;
+      padding: 96px 24px;
+    }
+    .kindergarten-note {
+      margin-top: 24px;
+      font-size: 14px; font-weight: 700; color: var(--muted);
+      text-align: center;
+    }
 
     /* Nudge card */
     .nudge {
@@ -689,6 +787,7 @@
 
   <ul class="nav-links">
     <li><a href="#worksheets">Worksheets</a></li>
+    <li><a href="#kindergarten">Kindergarten</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 
@@ -705,6 +804,7 @@
 
 <div class="mobile-drawer" id="mobile-drawer">
   <a href="#worksheets" onclick="closeNav()">Worksheets</a>
+  <a href="#kindergarten" onclick="closeNav()">Kindergarten</a>
   <a href="#about" onclick="closeNav()">About</a>
   <a href="#" class="nav-cta" onclick="closeNav()">
     <img src="assets/images/gyanquest-icon-48.png" alt="" class="app-icon-nav" loading="lazy">
@@ -772,7 +872,11 @@
           <span class="pill">GK</span>
           <span class="pill">English</span>
           <span class="pill">Olympiad</span>
+          <span class="pill pill-soft">More subjects coming soon</span>
         </div>
+        <p class="app-olympiad-note">
+          <strong>Olympiad:</strong> Math available <span class="soon-tag">Soon</span> Science, GK &amp; English coming soon
+        </p>
         <div class="app-btns">
           <a href="#" class="btn-dark">
             <i class="ti ti-brand-google-play"></i> Get on Google Play
@@ -825,290 +929,9 @@
   <div class="wrap">
     <div class="eyebrow">Free Resources</div>
     <h2 class="sec-title">Free Printable Worksheets</h2>
-    <p class="sec-sub">Click any topic to see available sheets. All free, no sign-up needed.</p>
+    <p class="sec-sub">Choose a subject, class, and topic to explore printable practice sheets. All entries below are placeholder scaffolding for now.</p>
 
-    <div class="subj-grid">
-
-      <!-- ── MATH ────────────────────────────────── -->
-      <div class="subj-card">
-        <div class="subj-head">
-          <div class="subj-dot" style="background:#FF6B35;"></div>
-          <h3>Mathematics</h3>
-        </div>
-        <div class="topic-list">
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Addition <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Single Digit</span>
-                <a href="assets/worksheets/math/addition/addition-single-digit.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Double Digit</span>
-                <a href="assets/worksheets/math/addition/addition-double-digit.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">With Carry-Over</span>
-                <a href="assets/worksheets/math/addition/addition-with-carry-over.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Subtraction <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Basic Subtraction</span>
-                <a href="assets/worksheets/math/subtraction/subtraction-basic-subtraction.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Borrowing Method</span>
-                <a href="assets/worksheets/math/subtraction/subtraction-borrowing-method.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Multiplication <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Tables 1&ndash;5</span>
-                <a href="assets/worksheets/math/multiplication/multiplication-tables-1-5.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Tables 6&ndash;10</span>
-                <a href="assets/worksheets/math/multiplication/multiplication-tables-6-10.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Counting <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">1 to 20</span>
-                <a href="assets/worksheets/math/counting/counting-1-to-20.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">1 to 100</span>
-                <a href="assets/worksheets/math/counting/counting-1-to-100.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ── SCIENCE ─────────────────────────────── -->
-      <div class="subj-card">
-        <div class="subj-head">
-          <div class="subj-dot" style="background:#16A34A;"></div>
-          <h3>Science</h3>
-        </div>
-        <div class="topic-list">
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Plants <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Parts of a Plant</span>
-                <a href="assets/worksheets/science/plants/plants-parts-of-a-plant.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Types of Plants</span>
-                <a href="assets/worksheets/science/plants/plants-types-of-plants.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Animals <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Domestic &amp; Wild Animals</span>
-                <a href="assets/worksheets/science/animals/animals-domestic-wild-animals.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Animal Habitats</span>
-                <a href="assets/worksheets/science/animals/animals-animal-habitats.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Water <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Uses of Water</span>
-                <a href="assets/worksheets/science/water/water-uses-of-water.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Water Cycle</span>
-                <a href="assets/worksheets/science/water/water-water-cycle.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Weather <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Seasons</span>
-                <a href="assets/worksheets/science/weather/weather-seasons.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Types of Weather</span>
-                <a href="assets/worksheets/science/weather/weather-types-of-weather.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ── GK ──────────────────────────────────── -->
-      <div class="subj-card">
-        <div class="subj-head">
-          <div class="subj-dot" style="background:#7C3AED;"></div>
-          <h3>General Knowledge</h3>
-        </div>
-        <div class="topic-list">
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              India <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">States &amp; Capitals</span>
-                <a href="assets/worksheets/gk/india/india-states-capitals.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">National Symbols</span>
-                <a href="assets/worksheets/gk/india/india-national-symbols.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Countries <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Countries &amp; Capitals</span>
-                <a href="assets/worksheets/gk/countries/countries-countries-capitals.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Flags &amp; Continents</span>
-                <a href="assets/worksheets/gk/countries/countries-flags-continents.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Inventions <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Famous Inventions</span>
-                <a href="assets/worksheets/gk/inventions/inventions-famous-inventions.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Indian Scientists</span>
-                <a href="assets/worksheets/gk/inventions/inventions-indian-scientists.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="topic-item">
-            <button class="topic-btn" onclick="toggleTopic(this)">
-              Festivals <i class="ti ti-chevron-down topic-chevron"></i>
-            </button>
-            <div class="sheet-list">
-              <div class="sheet-row">
-                <span class="sheet-name">Festivals of India</span>
-                <a href="assets/worksheets/gk/festivals/festivals-festivals-of-india.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-              <div class="sheet-row">
-                <span class="sheet-name">Festivals Around the World</span>
-                <a href="assets/worksheets/gk/festivals/festivals-festivals-around-the-world.pdf" download class="sheet-dl">
-                  <i class="ti ti-download"></i> PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div><!-- /subj-grid -->
+    <div id="worksheet-library"></div>
 
     <!-- Nudge -->
     <div class="nudge">
@@ -1121,6 +944,16 @@
       <a href="#" class="btn-nudge">Get GyanQuest &rarr;</a>
     </div>
 
+  </div>
+</section>
+
+<section class="sec kindergarten-section" id="kindergarten">
+  <div class="wrap">
+    <div class="eyebrow">Early Learning</div>
+    <h2 class="sec-title">Activity Sheets for Kindergarten</h2>
+    <p class="sec-sub">Fun, screen-free activity sheets for ages 3&ndash;5 &mdash; tracing, colouring, shapes, and early numbers.</p>
+    <div id="kindergarten-library"></div>
+    <p class="kindergarten-note">More activity sheets coming soon.</p>
   </div>
 </section>
 
@@ -1189,21 +1022,497 @@
     hbg.classList.remove('open');
   }
 
-  /* Accordion — one topic open per subject card */
-  function toggleTopic(btn) {
-    const card    = btn.closest('.subj-card');
-    const list    = btn.nextElementSibling;
-    const wasOpen = btn.classList.contains('open');
-
-    /* Close all in this card */
-    card.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('open'));
-    card.querySelectorAll('.sheet-list').forEach(l => l.classList.remove('open'));
-
-    if (!wasOpen) {
-      btn.classList.add('open');
-      list.classList.add('open');
+  /*
+   * HOW TO ADD A REAL PDF WORKSHEET
+   * =================================
+   * 1. Place the PDF in:  assets/worksheets/{Subject}/{Class}/{Topic}/{filename}.pdf
+   *    e.g.  assets/worksheets/Math/Class 1/Counting/counting-1-10.pdf
+   * 2. Find the matching sheet entry in the WORKSHEETS array below.
+   * 3. Change:   file: null
+   *    to:       file: 'assets/worksheets/Math/Class 1/Counting/counting-1-10.pdf'
+   *
+   * That single change turns the "Coming soon" row into a live download link.
+   * No HTML, CSS, or layout changes needed.
+   *
+   * For Kindergarten activity sheets, edit KINDERGARTEN_ACTIVITYSHEETS the same way.
+   */
+  const WORKSHEETS = [
+    {
+      subject: 'Math', subjectHi: 'गणित', color: '#FF6B35', icon: '🔢',
+      classes: [
+        {
+          cls: 'Class 1', topics: [
+            { topic: 'Counting', topicHi: 'गिनती', sheets: [
+                { name: 'Counting 1–10', file: null },
+                { name: 'Counting 11–20', file: null }
+            ]},
+            { topic: 'Addition', topicHi: 'जोड़', sheets: [
+                { name: 'Add within 10', file: null },
+                { name: 'Add within 20', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 2', topics: [
+            { topic: 'Subtraction', topicHi: 'घटाव', sheets: [
+                { name: 'Subtraction basics', file: null },
+                { name: 'Borrowing practice', file: null }
+            ]},
+            { topic: 'Multiplication', topicHi: 'गुणा', sheets: [
+                { name: 'Tables 1–5', file: null },
+                { name: 'Tables 6–10', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 3', topics: [
+            { topic: 'Division', topicHi: 'भाग', sheets: [
+                { name: 'Division basics', file: null },
+                { name: 'Divide by 2 and 3', file: null }
+            ]},
+            { topic: 'Shapes', topicHi: 'आकृतियाँ', sheets: [
+                { name: '2D shapes', file: null },
+                { name: '3D shapes', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 4', topics: [
+            { topic: 'Fractions', topicHi: 'भिन्न', sheets: [
+                { name: 'Fraction basics', file: null },
+                { name: 'Compare fractions', file: null }
+            ]},
+            { topic: 'Multiplication', topicHi: 'गुणा', sheets: [
+                { name: 'Long multiplication', file: null },
+                { name: 'Word problems', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 5', topics: [
+            { topic: 'Decimals', topicHi: 'दशमलव', sheets: [
+                { name: 'Decimal place value', file: null },
+                { name: 'Add and subtract decimals', file: null }
+            ]},
+            { topic: 'Measurement', topicHi: 'माप', sheets: [
+                { name: 'Length and mass', file: null },
+                { name: 'Time and money', file: null }
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      subject: 'Science', subjectHi: 'विज्ञान', color: '#16A34A', icon: '🔬',
+      classes: [
+        {
+          cls: 'Class 1', topics: [
+            { topic: 'Plants', topicHi: 'पौधे', sheets: [
+                { name: 'Parts of a plant', file: null },
+                { name: 'Needs of plants', file: null }
+            ]},
+            { topic: 'Animals', topicHi: 'जीव', sheets: [
+                { name: 'Domestic and wild', file: null },
+                { name: 'Animal homes', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 2', topics: [
+            { topic: 'Water', topicHi: 'पानी', sheets: [
+                { name: 'Uses of water', file: null },
+                { name: 'Water cycle', file: null }
+            ]},
+            { topic: 'Weather', topicHi: 'मौसम', sheets: [
+                { name: 'Types of weather', file: null },
+                { name: 'Seasons', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 3', topics: [
+            { topic: 'Earth', topicHi: 'पृथ्वी', sheets: [
+                { name: 'Layers of Earth', file: null },
+                { name: 'Natural resources', file: null }
+            ]},
+            { topic: 'Space', topicHi: 'अंतरिक्ष', sheets: [
+                { name: 'Planets', file: null },
+                { name: 'Moon phases', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 4', topics: [
+            { topic: 'Plants', topicHi: 'पौधे', sheets: [
+                { name: 'Plant life cycle', file: null },
+                { name: 'Seed dispersal', file: null }
+            ]},
+            { topic: 'Animals', topicHi: 'जीव', sheets: [
+                { name: 'Food chains', file: null },
+                { name: 'Mammals and birds', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 5', topics: [
+            { topic: 'Water', topicHi: 'पानी', sheets: [
+                { name: 'Conservation', file: null },
+                { name: 'Safe drinking water', file: null }
+            ]},
+            { topic: 'Weather', topicHi: 'मौसम', sheets: [
+                { name: 'Climate and weather', file: null },
+                { name: 'Weather instruments', file: null }
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      subject: 'GK', subjectHi: 'सामान्य ज्ञान', color: '#7C3AED', icon: '🌍',
+      classes: [
+        {
+          cls: 'Class 1', topics: [
+            { topic: 'Countries & Capitals', topicHi: 'देश और राजधानी', sheets: [
+                { name: 'Country match', file: null },
+                { name: 'Capital match', file: null }
+            ]},
+            { topic: 'Famous Animals', topicHi: 'प्रसिद्ध जानवर', sheets: [
+                { name: 'Animal facts', file: null },
+                { name: 'Animal homes', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 2', topics: [
+            { topic: 'India', topicHi: 'भारत', sheets: [
+                { name: 'States and capitals', file: null },
+                { name: 'National symbols', file: null }
+            ]},
+            { topic: 'Inventions', topicHi: 'आविष्कार', sheets: [
+                { name: 'Famous inventions', file: null },
+                { name: 'Inventors', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 3', topics: [
+            { topic: 'Festivals', topicHi: 'त्योहार', sheets: [
+                { name: 'Indian festivals', file: null },
+                { name: 'Festival traditions', file: null }
+            ]},
+            { topic: 'India', topicHi: 'भारत', sheets: [
+                { name: 'Monuments', file: null },
+                { name: 'Famous leaders', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 4', topics: [
+            { topic: 'Countries & Capitals', topicHi: 'देश और राजधानी', sheets: [
+                { name: 'Continents', file: null },
+                { name: 'Flags', file: null }
+            ]},
+            { topic: 'Inventions', topicHi: 'आविष्कार', sheets: [
+                { name: 'Science inventors', file: null },
+                { name: 'Daily life inventions', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 5', topics: [
+            { topic: 'Festivals', topicHi: 'त्योहार', sheets: [
+                { name: 'Festivals around the world', file: null },
+                { name: 'Cultural traditions', file: null }
+            ]},
+            { topic: 'Famous Animals', topicHi: 'प्रसिद्ध जानवर', sheets: [
+                { name: 'Endangered species', file: null },
+                { name: 'Wildlife facts', file: null }
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      subject: 'English', subjectHi: 'अंग्रेज़ी', color: '#2D9CDB', icon: '🔤',
+      classes: [
+        {
+          cls: 'Class 1', topics: [
+            { topic: 'Alphabet', topicHi: 'वर्णमाला', sheets: [
+                { name: 'Alphabet tracing', file: null },
+                { name: 'Capital and small letters', file: null }
+            ]},
+            { topic: 'Spelling', topicHi: 'हिज्जे', sheets: [
+                { name: 'Three-letter words', file: null },
+                { name: 'Short vowel words', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 2', topics: [
+            { topic: 'Vocabulary', topicHi: 'शब्दावली', sheets: [
+                { name: 'Family words', file: null },
+                { name: 'School words', file: null }
+            ]},
+            { topic: 'Grammar', topicHi: 'व्याकरण', sheets: [
+                { name: 'Nouns', file: null },
+                { name: 'Verbs', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 3', topics: [
+            { topic: 'Sentences', topicHi: 'वाक्य', sheets: [
+                { name: 'Sentence building', file: null },
+                { name: 'Punctuation practice', file: null }
+            ]},
+            { topic: 'Opposites', topicHi: 'विलोम', sheets: [
+                { name: 'Common opposites', file: null },
+                { name: 'Picture opposites', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 4', topics: [
+            { topic: 'Tenses', topicHi: 'काल', sheets: [
+                { name: 'Present tense', file: null },
+                { name: 'Past tense', file: null }
+            ]},
+            { topic: 'Grammar', topicHi: 'व्याकरण', sheets: [
+                { name: 'Adjectives', file: null },
+                { name: 'Prepositions', file: null }
+            ]}
+          ]
+        },
+        {
+          cls: 'Class 5', topics: [
+            { topic: 'Vocabulary', topicHi: 'शब्दावली', sheets: [
+                { name: 'Synonyms', file: null },
+                { name: 'Word meanings', file: null }
+            ]},
+            { topic: 'Sentences', topicHi: 'वाक्य', sheets: [
+                { name: 'Paragraph writing', file: null },
+                { name: 'Speaking prompts', file: null }
+            ]}
+          ]
+        }
+      ]
     }
+  ];
+
+  const KINDERGARTEN_ACTIVITYSHEETS = [
+    {
+      category: 'Tracing & Pre-writing', categoryHi: 'लेखन से पहले', icon: '✏️', sheets: [
+        { name: 'Trace straight lines', file: null },
+        { name: 'Trace curves', file: null },
+        { name: 'Follow the dots', file: null }
+      ]
+    },
+    {
+      category: 'Colouring', categoryHi: 'रंग भरना', icon: '🎨', sheets: [
+        { name: 'Colour the shapes', file: null },
+        { name: 'Colour the animals', file: null },
+        { name: 'Colour by pattern', file: null }
+      ]
+    },
+    {
+      category: 'Shapes & Patterns', categoryHi: 'आकृतियाँ और पैटर्न', icon: '🔷', sheets: [
+        { name: 'Circle and square', file: null },
+        { name: 'Pattern practice', file: null },
+        { name: 'Shape matching', file: null }
+      ]
+    },
+    {
+      category: 'Numbers 1–10', categoryHi: 'संख्याएँ १–१०', icon: '🔢', sheets: [
+        { name: 'Count and circle', file: null },
+        { name: 'Number tracing', file: null },
+        { name: 'Match the quantity', file: null }
+      ]
+    },
+    {
+      category: 'Letters A–Z', categoryHi: 'अक्षर A–Z', icon: '🔤', sheets: [
+        { name: 'Letter tracing', file: null },
+        { name: 'Letter matching', file: null },
+        { name: 'Find the first sound', file: null }
+      ]
+    },
+    {
+      category: 'Animals & Things', categoryHi: 'जानवर और चीज़ें', icon: '🐶', sheets: [
+        { name: 'Name the animal', file: null },
+        { name: 'Colour the object', file: null },
+        { name: 'Sort by size', file: null }
+      ]
+    }
+  ];
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
+
+  function buildSheetRow(sheet) {
+    if (sheet.file) {
+      return `
+        <div class="sheet-row">
+          <div class="sheet-name-wrap">
+            <span>📄</span>
+            <span class="sheet-name">${escapeHtml(sheet.name)}</span>
+          </div>
+          <a href="${escapeHtml(sheet.file)}" download class="sheet-link">
+            <i class="ti ti-download"></i> Download
+          </a>
+        </div>`;
+    }
+
+    return `
+      <div class="sheet-row">
+        <div class="sheet-name-wrap">
+          <span>📄</span>
+          <span class="sheet-name">${escapeHtml(sheet.name)}</span>
+        </div>
+        <span class="sheet-soon">
+          <span>Coming soon</span>
+          <span class="soon-badge">Soon</span>
+        </span>
+      </div>`;
+  }
+
+  function renderWorksheetLibrary() {
+    const root = document.getElementById('worksheet-library');
+    if (!root) return;
+
+    root.innerHTML = WORKSHEETS.map((subject) => `
+      <div class="worksheet-card">
+        <button class="worksheet-toggle subject-toggle" type="button" style="--accent:${subject.color};" data-level="subject">
+          <span class="toggle-label">
+            <span class="toggle-icon">${subject.icon}</span>
+            <span class="toggle-title-wrap">
+              <span class="toggle-title">${escapeHtml(subject.subject)}</span>
+              <span class="toggle-subtitle">${escapeHtml(subject.subjectHi)}</span>
+            </span>
+          </span>
+          <span class="toggle-meta">
+            <span class="meta-pill">Class 1–5</span>
+            <i class="ti ti-chevron-down worksheet-chevron"></i>
+          </span>
+        </button>
+        <div class="accordion-panel">
+          ${subject.classes.map((entry) => `
+            <div class="worksheet-card" style="border-radius:0; border-left:0; border-right:0; border-top:1px solid rgba(28,19,32,0.06);">
+              <button class="worksheet-toggle class-toggle" type="button" data-level="class">
+                <span class="toggle-label">
+                  <span class="toggle-title-wrap">
+                    <span class="toggle-title">${escapeHtml(entry.cls)}</span>
+                  </span>
+                </span>
+                <span class="toggle-meta">
+                  <i class="ti ti-chevron-down worksheet-chevron"></i>
+                </span>
+              </button>
+              <div class="accordion-panel">
+                ${entry.topics.map((topic) => `
+                  <div>
+                    <button class="worksheet-toggle topic-toggle" type="button" data-level="topic">
+                      <span class="toggle-label">
+                        <span class="toggle-title-wrap">
+                          <span class="toggle-title">${escapeHtml(topic.topic)}</span>
+                          <span class="toggle-subtitle">${escapeHtml(topic.topicHi)}</span>
+                        </span>
+                      </span>
+                      <span class="toggle-meta">
+                        <i class="ti ti-chevron-down worksheet-chevron"></i>
+                      </span>
+                    </button>
+                    <div class="accordion-panel">
+                      ${topic.sheets.map(buildSheetRow).join('')}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderKindergartenLibrary() {
+    const root = document.getElementById('kindergarten-library');
+    if (!root) return;
+
+    root.innerHTML = `
+      <div class="worksheet-accordion">
+        ${KINDERGARTEN_ACTIVITYSHEETS.map((item) => `
+          <div class="worksheet-card">
+            <button class="worksheet-toggle subject-toggle" type="button" style="--accent: var(--gold);">
+              <span class="toggle-label">
+                <span class="toggle-icon">${item.icon}</span>
+                <span class="toggle-title-wrap">
+                  <span class="toggle-title">${escapeHtml(item.category)}</span>
+                  <span class="toggle-subtitle">${escapeHtml(item.categoryHi)}</span>
+                </span>
+              </span>
+              <span class="toggle-meta">
+                <i class="ti ti-chevron-down worksheet-chevron"></i>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              ${item.sheets.map(buildSheetRow).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  document.addEventListener('click', (event) => {
+    const btn = event.target.closest('.worksheet-toggle');
+    if (!btn) return;
+
+    const panel = btn.nextElementSibling;
+    if (!panel || !panel.classList.contains('accordion-panel')) return;
+
+    event.preventDefault();
+    const isOpening = !panel.classList.contains('open');
+    btn.classList.toggle('open');
+    panel.classList.toggle('open');
+
+    if (isOpening) {
+      const expandHeight = panel.scrollHeight;
+      panel.style.maxHeight = expandHeight + 'px';
+
+      // Grow every open ancestor panel so nested content is never clipped
+      let ancestor = btn.closest('.accordion-panel');
+      while (ancestor) {
+        if (ancestor.classList.contains('open')) {
+          ancestor.style.maxHeight =
+            (parseFloat(ancestor.style.maxHeight) || 0) + expandHeight + 'px';
+        }
+        const p = ancestor.parentElement;
+        ancestor = p ? p.closest('.accordion-panel') : null;
+      }
+    } else {
+      const collapseHeight = parseFloat(panel.style.maxHeight) || 0;
+      panel.style.maxHeight = '';
+
+      // Shrink every open ancestor panel by the amount we just collapsed
+      let ancestor = btn.closest('.accordion-panel');
+      while (ancestor) {
+        if (ancestor.classList.contains('open')) {
+          ancestor.style.maxHeight =
+            Math.max(0, (parseFloat(ancestor.style.maxHeight) || 0) - collapseHeight) + 'px';
+        }
+        const p = ancestor.parentElement;
+        ancestor = p ? p.closest('.accordion-panel') : null;
+      }
+    }
+  });
+
+  renderWorksheetLibrary();
+  renderKindergartenLibrary();
 </script>
 
 </body>
